@@ -1,7 +1,7 @@
 ﻿using Com.GitHub.Knose1.Common.Utils;
 using UnityEngine;
 
-namespace Com.GitHub.Knose1.MiniJam75
+namespace Com.GitHub.Knose1.MiniJam75.Game.Trigger
 {
 	public class Bounce : MonoBehaviour, IPlayerInteraction
 	{

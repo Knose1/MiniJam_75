@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Com.GitHub.Knose1.Common.AnimationUtils;
 
@@ -32,6 +31,12 @@ namespace Com.GitHub.Knose1.MiniJam75.Game
 
 		private void PlayerPhysic_OnEnd(bool isWin)
 		{
+			if (!isWin && PlayerSettings.Instance.autoRestart)
+			{
+				OnRestart();
+				return;
+			}
+
 			playerPhysic.OnEnd -= PlayerPhysic_OnEnd;
 
 			Time.timeScale = 0;
@@ -52,7 +57,8 @@ namespace Com.GitHub.Knose1.MiniJam75.Game
 
 		private void OnRestart()
 		{
-			SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+			restartBtn.onClick.RemoveAllListeners();
+			GameSceneManager.Instance.ReloadCurrentScene();
 		}
 	}
 }

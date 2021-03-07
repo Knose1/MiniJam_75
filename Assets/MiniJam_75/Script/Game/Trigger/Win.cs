@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Com.GitHub.Knose1.MiniJam75
+namespace Com.GitHub.Knose1.MiniJam75.Game.Trigger
 {
 	public class Win : MonoBehaviour, IPlayerInteraction
 	{

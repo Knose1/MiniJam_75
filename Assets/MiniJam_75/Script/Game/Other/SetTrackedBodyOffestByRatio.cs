@@ -4,7 +4,7 @@ using UnityEngine;
 using Cinemachine;
 using Cinemachine.PostFX;
 
-namespace Com.GitHub.Knose1.MiniJam75
+namespace Com.GitHub.Knose1.MiniJam75.Game
 {
 	[ExecuteAlways]
 	public class SetTrackedBodyOffestByRatio : MonoBehaviour

@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Com.GitHub.Knose1.MiniJam75.Game
 {
@@ -20,7 +21,7 @@ namespace Com.GitHub.Knose1.MiniJam75.Game
 		[Header("Physic")]
 		[SerializeField] private float forwardSpeed = 1;
 		[SerializeField] private float impulseOnGround = 2;
-		[SerializeField, Tooltip("The impulse units you loss by seconds")] public float gravity = 1;
+		[SerializeField, Tooltip("The impulse units you lose by seconds")] public float gravity = 1;
 		[SerializeField] public float weight = 1;
 		[SerializeField] private float maxSpeed = 100;
 
@@ -38,6 +39,17 @@ namespace Com.GitHub.Knose1.MiniJam75.Game
 		[SerializeField] private LayerMask physicPowerUpLayerMask = default;
 		[SerializeField] private float timeBetweenEffects = 0.1f;
 
+		[Header("Game End transition")]
+		[SerializeField] private PlayerInput input = null;
+		[SerializeField] private Rigidbody2D myRb = null;
+		[SerializeField] private Scroller backgroundScroller = null;
+		[SerializeField] private SpriteRenderer playerVisual = null;
+		[SerializeField] private GameObject trailParticle = null;
+		[SerializeField] private GameObject gameOverParticle = null;
+		[SerializeField] private float gameOverTransitionTime = 0.5f;
+		[SerializeField] private float winTransitionTime = 3f;
+
+		private bool enableMove = true;
 		private float ySpeed;
 		private float xPos;
 		private float yPos;
@@ -54,6 +66,8 @@ namespace Com.GitHub.Knose1.MiniJam75.Game
 
 		private void FixedUpdate()
 		{
+			if (!enableMove) return; 
+
 			float fixedDeltaTime = Time.fixedDeltaTime;
 			
 			HandleMove(fixedDeltaTime);
@@ -234,7 +248,7 @@ namespace Com.GitHub.Knose1.MiniJam75.Game
 				if (timeSinceDeathHit >= deathCoyoteeTime)
 				{
 					if (debugPauseOnDeath) Debug.Break();
-					OnEnd?.Invoke(false);
+					BeforeSendOnEnd(false);
 
 					//transform.position = deathHitLocation;
 
@@ -248,6 +262,51 @@ namespace Com.GitHub.Knose1.MiniJam75.Game
 				timeSinceDeathHit = 0;
 			}
 		}
+
+		//*///////////////////////////////////////////*/
+		//*                On Game End                */
+		//*///////////////////////////////////////////*/
+
+		private void BeforeSendOnEnd(bool isWin)
+		{
+			Destroy(input);
+			StartCoroutine(isWin ? WinCoroutine() : DeathCoroutine());
+		}
+
+		private IEnumerator DeathCoroutine()
+		{
+			enableMove = false;
+			myRb.isKinematic = true;
+			backgroundScroller.enabled = false;
+
+			MoveToLeftManager.Instance.speed = 0;
+
+			//Destroy the visual
+			Destroy(playerVisual);
+			Destroy(trailParticle);
+
+			//Spawn particles
+			Transform tr = Instantiate(gameOverParticle).transform;
+			tr.position = transform.position;
+
+			yield return new WaitForSeconds(gameOverTransitionTime);
+			OnEnd?.Invoke(false);
+		}
+
+		private IEnumerator WinCoroutine()
+		{
+			float startTimeScale = Time.timeScale;
+			float time = winTransitionTime;
+			while (time > 0)
+			{
+				Time.timeScale = Mathf.Lerp(0, startTimeScale, Mathf.InverseLerp(0, winTransitionTime, time));
+				yield return new WaitForEndOfFrame();
+				time -= Time.unscaledDeltaTime;
+			}
+
+			OnEnd?.Invoke(true);
+		}
+
 
 		private void OnDestroy()
 		{
@@ -305,7 +364,7 @@ namespace Com.GitHub.Knose1.MiniJam75.Game
 
 			if (interactionModifier.isEnd)
 			{
-				OnEnd?.Invoke(interactionModifier.endStatus);
+				BeforeSendOnEnd(interactionModifier.endStatus);
 			}
 		}
 	}

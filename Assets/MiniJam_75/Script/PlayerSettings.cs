@@ -10,6 +10,7 @@ namespace Com.GitHub.Knose1.MiniJam75
 	public class PlayerSettings : MonoBehaviour
 	{
 		[SerializeField] public float timeScale = 1;
+		[SerializeField] public bool autoRestart = false;
 
 
 		private static PlayerSettings instance;
@@ -32,7 +33,7 @@ namespace Com.GitHub.Knose1.MiniJam75
 			DontDestroyOnLoad(gameObject);
 		}
 
-		public void OnDestroy()
+		private void OnDestroy()
 		{
 			instance = null;
 		}

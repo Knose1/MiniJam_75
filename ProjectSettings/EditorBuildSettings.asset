@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/MiniJam_75/Scenes/Main.unity
+    guid: 64ae3c2b11531e74b8e195b68fd82c53
+  - enabled: 1
+    path: Assets/MiniJam_75/Scenes/TitleCard.unity
+    guid: 224ad5913766f90448d76cf56501b173
+  - enabled: 1
     path: Assets/MiniJam_75/Scenes/Level1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects:

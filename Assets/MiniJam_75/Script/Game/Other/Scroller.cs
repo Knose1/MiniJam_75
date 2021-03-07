@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Com.GitHub.Knose1.MiniJam75
+namespace Com.GitHub.Knose1.MiniJam75.Game
 {
 	public class Scroller : MonoBehaviour
 	{

@@ -1,15 +1,21 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Com.GitHub.Knose1.MiniJam75
+namespace Com.GitHub.Knose1.MiniJam75.Game
 {
 	public class MoveToLeft : MonoBehaviour
 	{
-		[SerializeField] public float speed = 5f;
+		//[SerializeField] public float speed = 5f;
 		[SerializeField] public float destroyPosition = -20;
 		[SerializeField] public GameObject destroyGameobject = null;
 
+		public static event Action<MoveToLeft> OnStart;
 		public event Action<GameObject, MoveToLeft> OnDispose;
+
+		private void Start()
+		{
+			
+		}
 
 		// Update is called once per frame
 		void Update()
@@ -21,7 +27,7 @@ namespace Com.GitHub.Knose1.MiniJam75
 				Destroy(toDestroy);
 			}
 
-			transform.position += new Vector3(-speed * Time.deltaTime, 0, 0);
+			transform.position += new Vector3(-MoveToLeftManager.Instance.speed * Time.deltaTime, 0, 0);
 		}
 
 		private void OnDestroy()
