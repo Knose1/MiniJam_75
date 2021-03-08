@@ -9,7 +9,6 @@ namespace Com.GitHub.Knose1.MiniJam75.Game
 		[SerializeField] public float destroyPosition = -20;
 		[SerializeField] public GameObject destroyGameobject = null;
 
-		public static event Action<MoveToLeft> OnStart;
 		public event Action<GameObject, MoveToLeft> OnDispose;
 
 		private void Start()

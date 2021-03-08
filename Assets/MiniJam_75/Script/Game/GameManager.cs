@@ -4,30 +4,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Com.GitHub.Knose1.Common.AnimationUtils;
+using Com.GitHub.Knose1.MiniJam75.UI;
 
 namespace Com.GitHub.Knose1.MiniJam75.Game
 {
 	public class GameManager : MonoBehaviour
 	{
-		[SerializeField] private PlayerPhysic playerPhysic = null;
+		private static GameManager instance;
 
-		[Header("Game End")]
-		[SerializeField] private CanvasGroup gameEnd = null;
-		[SerializeField] private Button restartBtn = null;
-		[SerializeField] private Text titleTxt = null;
-		[SerializeField] private string textWin = "Victory";
-		[SerializeField] private Text restartTxt = null;
-		[SerializeField] private string restartText = "Restart";
-		[SerializeField] private Color colorWin = Color.green;
-		[SerializeField] private Animator gameEndAnimator = null;
-		[SerializeField] private AnimatorParameter gameEndTrigger = default;
+		/// <summary>
+		/// Unique instance 
+		/// </summary>
+		public static GameManager Instance
+		{
+			get
+			{
+				return instance = instance ?? FindObjectOfType<GameManager>();
+			}
+		}
+
+		[SerializeField] private PlayerPhysic playerPhysic = null;
 
 		// Start is called before the first frame update
 		void Awake()
 		{
+			if (!instance) instance = this;
+
 			playerPhysic.OnEnd += PlayerPhysic_OnEnd;
-			Time.timeScale = PlayerSettings.Instance.timeScale;
+			AllowPlay();
 		}
+
+		public void AllowPlay() => Time.timeScale = PlayerSettings.Instance.timeScale;
+		public void DisablePlay() => Time.timeScale = 0;
 
 		private void PlayerPhysic_OnEnd(bool isWin)
 		{
@@ -40,25 +48,27 @@ namespace Com.GitHub.Knose1.MiniJam75.Game
 			playerPhysic.OnEnd -= PlayerPhysic_OnEnd;
 
 			Time.timeScale = 0;
-			gameEnd.alpha = 1;
-			gameEnd.blocksRaycasts = true;
 
-			if (isWin)
-			{
-				restartTxt.text = restartText;
-				titleTxt.text = textWin;
-				titleTxt.color = colorWin;
-			}
+			GameEnd gameEnd = FindObjectOfType<GameEnd>();
+			gameEnd.OnRestart += GameEnd_OnRestart;
+			StartCoroutine(gameEnd.Show(isWin));
 
-			gameEndTrigger.Call(gameEndAnimator);
+		}
 
-			restartBtn.onClick.AddListener(OnRestart);
+		private void GameEnd_OnRestart(GameEnd gameEnd)
+		{
+			gameEnd.OnRestart -= GameEnd_OnRestart;
+			OnRestart();
 		}
 
 		private void OnRestart()
 		{
-			restartBtn.onClick.RemoveAllListeners();
-			GameSceneManager.Instance.ReloadCurrentScene();
+			GameSceneManager.Instance.ReloadCurrentLevel();
+		}
+
+		private void OnDestroy()
+		{
+			if (instance == this) instance = null;
 		}
 	}
 }

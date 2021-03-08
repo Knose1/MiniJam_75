@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,7 +17,7 @@ namespace Com.GitHub.Knose1.MiniJam75.Game
 		public Vector3 scrollSpeed;
 		public ScrollContext scrollContext;
 
-		private Vector3 scroll;
+		[NonSerialized] public Vector3 scroll;
 
 		// Update is called once per frame
 		void Update()

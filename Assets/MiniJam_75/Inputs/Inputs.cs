@@ -64,7 +64,7 @@ namespace Com.GitHub.Knose1.MiniJam75
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""Gamepad"",
+                    ""name"": ""GamepadTrigger"",
                     ""id"": ""36d310bd-f276-415c-b93f-412d39e0cc7c"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
@@ -95,6 +95,99 @@ namespace Com.GitHub.Knose1.MiniJam75
                     ""action"": ""Weight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Gamepad 2"",
+                    ""id"": ""203bd37a-78e4-4f38-b2d9-0d969e0f6291"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Weight"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""559241ec-44f0-40b3-9af0-fb50645f5b92"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Weight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""2a7b97db-2edb-44c5-9c90-865b2f184ed0"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Weight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
+        },
+        {
+            ""name"": ""GameUI"",
+            ""id"": ""1b70c026-7e89-4021-9fa7-b7f6c5f5bf7f"",
+            ""actions"": [
+                {
+                    ""name"": ""SwitchPause"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""0ff3e0ce-dfa5-4837-a8be-f07e0343434a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""9c5a3746-0f75-4978-82dc-22932d3ad444"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard_and_Mouse"",
+                    ""action"": ""SwitchPause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""10597a22-44a7-403d-bce4-821641d64153"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard_and_Mouse"",
+                    ""action"": ""SwitchPause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a4c3ebd7-bf28-48de-940b-70e5c08c25a4"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""SwitchPause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""85ff54d6-86e0-4fca-8dca-ca1477b7b086"",
+                    ""path"": ""<DualShockGamepad>/touchpadButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""SwitchPause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -104,7 +197,7 @@ namespace Com.GitHub.Knose1.MiniJam75
             ""actions"": [
                 {
                     ""name"": ""Point"",
-                    ""type"": ""Value"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""f473e6e6-9029-426f-b530-45bcdccce2e8"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
@@ -112,7 +205,7 @@ namespace Com.GitHub.Knose1.MiniJam75
                 },
                 {
                     ""name"": ""Click"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""4deeb19a-b726-432a-9080-ac60d5fe7f6d"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -120,7 +213,7 @@ namespace Com.GitHub.Knose1.MiniJam75
                 },
                 {
                     ""name"": ""MiddleClick"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""39889193-c5c5-4d92-9167-b1b6da931acc"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -128,7 +221,7 @@ namespace Com.GitHub.Knose1.MiniJam75
                 },
                 {
                     ""name"": ""RightClick"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""0a310685-d2af-479a-95a2-4ba69e89ddf7"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -136,7 +229,7 @@ namespace Com.GitHub.Knose1.MiniJam75
                 },
                 {
                     ""name"": ""ScrollWheel"",
-                    ""type"": ""Value"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""ba4d54b3-752c-41c5-984a-48f7aa8ec7f6"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
@@ -144,7 +237,7 @@ namespace Com.GitHub.Knose1.MiniJam75
                 },
                 {
                     ""name"": ""Navigate"",
-                    ""type"": ""Value"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""50411977-6331-43dc-ab66-31a39a5796f3"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
@@ -152,7 +245,7 @@ namespace Com.GitHub.Knose1.MiniJam75
                 },
                 {
                     ""name"": ""Submit"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""054ec4ca-8233-4d5f-8e69-9a291e7516c2"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -160,7 +253,7 @@ namespace Com.GitHub.Knose1.MiniJam75
                 },
                 {
                     ""name"": ""Cancel"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""5e1707c6-9a35-41e4-8a3e-2eb43c03edd2"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -168,7 +261,7 @@ namespace Com.GitHub.Knose1.MiniJam75
                 },
                 {
                     ""name"": ""TrackedDevicePosition"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""8e6f07b9-d254-4d52-b355-13e44a5730e2"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -176,7 +269,7 @@ namespace Com.GitHub.Knose1.MiniJam75
                 },
                 {
                     ""name"": ""TrackedDeviceOrientation"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""9e285116-fb86-4e46-b7db-e17ca6a1305a"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -440,6 +533,9 @@ namespace Com.GitHub.Knose1.MiniJam75
             // Player
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_Weight = m_Player.FindAction("Weight", throwIfNotFound: true);
+            // GameUI
+            m_GameUI = asset.FindActionMap("GameUI", throwIfNotFound: true);
+            m_GameUI_SwitchPause = m_GameUI.FindAction("SwitchPause", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Point = m_UI.FindAction("Point", throwIfNotFound: true);
@@ -530,6 +626,39 @@ namespace Com.GitHub.Knose1.MiniJam75
             }
         }
         public PlayerActions @Player => new PlayerActions(this);
+
+        // GameUI
+        private readonly InputActionMap m_GameUI;
+        private IGameUIActions m_GameUIActionsCallbackInterface;
+        private readonly InputAction m_GameUI_SwitchPause;
+        public struct GameUIActions
+        {
+            private @Inputs m_Wrapper;
+            public GameUIActions(@Inputs wrapper) { m_Wrapper = wrapper; }
+            public InputAction @SwitchPause => m_Wrapper.m_GameUI_SwitchPause;
+            public InputActionMap Get() { return m_Wrapper.m_GameUI; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(GameUIActions set) { return set.Get(); }
+            public void SetCallbacks(IGameUIActions instance)
+            {
+                if (m_Wrapper.m_GameUIActionsCallbackInterface != null)
+                {
+                    @SwitchPause.started -= m_Wrapper.m_GameUIActionsCallbackInterface.OnSwitchPause;
+                    @SwitchPause.performed -= m_Wrapper.m_GameUIActionsCallbackInterface.OnSwitchPause;
+                    @SwitchPause.canceled -= m_Wrapper.m_GameUIActionsCallbackInterface.OnSwitchPause;
+                }
+                m_Wrapper.m_GameUIActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @SwitchPause.started += instance.OnSwitchPause;
+                    @SwitchPause.performed += instance.OnSwitchPause;
+                    @SwitchPause.canceled += instance.OnSwitchPause;
+                }
+            }
+        }
+        public GameUIActions @GameUI => new GameUIActions(this);
 
         // UI
         private readonly InputActionMap m_UI;
@@ -656,6 +785,10 @@ namespace Com.GitHub.Knose1.MiniJam75
         public interface IPlayerActions
         {
             void OnWeight(InputAction.CallbackContext context);
+        }
+        public interface IGameUIActions
+        {
+            void OnSwitchPause(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {

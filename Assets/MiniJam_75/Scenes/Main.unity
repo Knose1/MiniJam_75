@@ -152,8 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad104bef5c133ae48808482e4eaa9976, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeScale: 2
-  autoRestart: 1
+  timeScale: 1
+  autoRestart: 0
 --- !u!4 &1600631406
 Transform:
   m_ObjectHideFlags: 0
@@ -181,7 +181,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   titlecardSceneIndex: 1
-  level1Index: 2
+  gameUI: 2
+  level1Index: 3
 --- !u!114 &1600631408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,4 +195,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6588849a480838e4fb14b48064ac4fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startWithLevel1: 1
+  startWithLevel1: 0

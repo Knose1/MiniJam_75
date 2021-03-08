@@ -2,16 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using System;
 
 namespace Com.GitHub.Knose1.MiniJam75
 {
 	public class GameSceneManager : MonoBehaviour
 	{
 		[SerializeField] public int titlecardSceneIndex = 1;
-		[SerializeField] public int level1Index = 2;
+		[SerializeField] public int gameUI = 2;
+		[SerializeField] public int level1Index = 3;
+
+		private int lastLevel = 1;
 
 		private static GameSceneManager instance;
-
+		
 		/// <summary>
 		/// Unique instance 
 		/// </summary>
@@ -38,12 +42,15 @@ namespace Com.GitHub.Knose1.MiniJam75
 		/// <param name="levelNumber">1 for "Level1", 2 for "Level2" etc...</param>
 		public void LoadLevel(int levelNumber)
 		{
-			SceneManager.LoadSceneAsync(level1Index + levelNumber - 1);
+			lastLevel = levelNumber;
+
+			SceneManager.LoadSceneAsync(level1Index + levelNumber - 1, LoadSceneMode.Single).priority = 1;
+			SceneManager.LoadSceneAsync(gameUI, LoadSceneMode.Additive).priority = 0;
 		}
 
-		public void ReloadCurrentScene()
+		public void ReloadCurrentLevel()
 		{
-			SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+			LoadLevel(lastLevel);
 		}
 
 		private void Awake()

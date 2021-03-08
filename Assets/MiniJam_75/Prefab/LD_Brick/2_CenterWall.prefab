@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b7f146d7c6bca4cab40a6d5770b6ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
   destroyPosition: -20
   destroyGameobject: {fileID: 4466035269133093354}
 --- !u!1001 &4466035268895499314
@@ -64,7 +63,7 @@ PrefabInstance:
     - target: {fileID: 8519640338467595610, guid: c96746a4987b51e48b9a676e4632ac77,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.25
+      value: 4.375
       objectReference: {fileID: 0}
     - target: {fileID: 8519640338467595610, guid: c96746a4987b51e48b9a676e4632ac77,
         type: 3}
@@ -114,7 +113,7 @@ PrefabInstance:
     - target: {fileID: 8519640338467595610, guid: c96746a4987b51e48b9a676e4632ac77,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 2.75
       objectReference: {fileID: 0}
     - target: {fileID: 8519640338467595610, guid: c96746a4987b51e48b9a676e4632ac77,
         type: 3}
@@ -149,7 +148,7 @@ PrefabInstance:
     - target: {fileID: 8519640338467595610, guid: c96746a4987b51e48b9a676e4632ac77,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.75
+      value: 0.875
       objectReference: {fileID: 0}
     - target: {fileID: 8519640338467595610, guid: c96746a4987b51e48b9a676e4632ac77,
         type: 3}
@@ -199,7 +198,7 @@ PrefabInstance:
     - target: {fileID: 8519640338467595610, guid: c96746a4987b51e48b9a676e4632ac77,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: 8519640338467595610, guid: c96746a4987b51e48b9a676e4632ac77,
         type: 3}

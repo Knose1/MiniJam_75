@@ -29,8 +29,12 @@ namespace Com.GitHub.Knose1.MiniJam75
 
 		private void Start()
 		{
-			if (startWithLevel1) GameSceneManager.Instance.LoadLevel(1);
+			if (startWithLevel1)
+			{
+				GameSceneManager.Instance.LoadLevel(1);
+			}
 			else GameSceneManager.Instance.LoadTitleCard();
+
 		}
 
 		private void OnDestroy()
